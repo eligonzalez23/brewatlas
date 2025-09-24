@@ -1,6 +1,13 @@
 export default function Home() {
   return (
-    <main>
+    <main
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
       <h1>BrewAtlas</h1>
     </main>
   );
