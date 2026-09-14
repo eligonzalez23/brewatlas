@@ -1,15 +1,19 @@
+
 @import "tailwindcss";
 
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
   --bg: #141210;
-  --surface: #1b1815;
-  --surface2: #211c17;
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #f4efe8;
-  --muted: rgba(244, 239, 232, 0.64);
-  --accent: #d39a5b;
-  --accent-bright: #f0bd7b;
-  --accent2: rgba(211, 154, 91, 0.17);
+  --surface: #1B1815;
+  --surface2: #201C18;
+  --border: rgba(255,255,255,.08);
+  --text: #F2EFEA;
+  --muted: rgba(242,239,234,.65);
+  --accent: #C08B56;
+  --accent2: rgba(192,139,86,.22);
 }
 
 * {
@@ -18,354 +22,705 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  min-height: 100%;
-}
-
-body {
+body{
   background: var(--bg);
   color: var(--text);
 }
 
-button,
-a {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-}
-
-.home-shell {
-  position: relative;
-  min-height: 100svh;
-  overflow: hidden;
-  padding: clamp(18px, 4vw, 48px);
-  background:
-    radial-gradient(circle at 78% 18%, rgba(126, 76, 35, 0.24), transparent 30%),
-    linear-gradient(145deg, #171411 0%, #12100e 56%, #0d0c0a 100%);
-}
-
-.home-noise {
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-}
-
-.home-orbit {
-  position: absolute;
-  border: 1px solid rgba(211, 154, 91, 0.14);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.home-orbit-one {
-  width: min(58vw, 720px);
-  height: min(58vw, 720px);
-  top: -28vw;
-  right: -14vw;
-}
-
-.home-orbit-two {
-  width: min(38vw, 480px);
-  height: min(38vw, 480px);
-  bottom: -22vw;
-  left: -16vw;
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.home-panel {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  width: min(100%, 1120px);
-  min-height: calc(100svh - clamp(36px, 8vw, 96px));
-  margin: 0 auto;
-}
-
-.home-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4px 0;
-}
-
-.brand-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  text-decoration: none;
-}
-
-.brand-mark {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border: 1px solid rgba(211, 154, 91, 0.48);
-  border-radius: 12px;
-  color: var(--accent-bright);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  background: rgba(211, 154, 91, 0.12);
-}
-
-.brand-name {
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.nav-meta,
-.eyebrow,
-.card-kicker,
-.home-footer {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.nav-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  letter-spacing: 0.12em;
-}
-
-.live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-bright);
-  box-shadow: 0 0 0 4px rgba(240, 189, 123, 0.1);
-}
-
-.icon-button {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  color: var(--text);
-  font-size: 18px;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.045);
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-}
-
-.icon-button:hover {
-  border-color: rgba(211, 154, 91, 0.55);
-  background: var(--accent2);
-  transform: translateY(-2px);
-}
-
-.home-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  width: min(100%, 680px);
-  padding: clamp(72px, 12vh, 150px) 0 clamp(34px, 7vh, 74px);
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  color: var(--accent-bright);
-}
-
-.eyebrow-line {
-  width: 28px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.home-content h1 {
-  max-width: 620px;
-  margin-top: 22px;
-  color: var(--text);
-  font-size: clamp(58px, 10vw, 112px);
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: -0.07em;
-}
-
-.home-content h1 em {
-  color: var(--accent-bright);
-}
-
-.hero-copy {
-  max-width: 400px;
-  margin-top: 26px;
-  color: var(--muted);
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.55;
-}
-
-.explore-card {
-  width: min(100%, 560px);
-  margin-top: clamp(46px, 8vh, 88px);
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(48, 38, 29, 0.82), rgba(30, 25, 21, 0.88));
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(18px);
-}
-
-.card-kicker {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 17px;
-  border-bottom: 1px solid var(--border);
-  color: rgba(244, 239, 232, 0.48);
-  font-size: 9px;
-}
-
-.card-index {
-  color: var(--accent);
-}
-
-.explore-heading {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 22px 4px 24px;
-}
-
-.pin-orb {
-  display: grid;
-  flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
-  place-items: center;
-  border: 1px solid rgba(211, 154, 91, 0.35);
-  border-radius: 15px;
-  color: var(--accent-bright);
-  font-size: 24px;
-  background: var(--accent2);
-}
-
-.explore-heading h2 {
-  color: var(--text);
-  font-size: clamp(20px, 3vw, 24px);
-  font-weight: 650;
-  letter-spacing: -0.03em;
-}
-
-.explore-heading p {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.map-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 16px 14px 18px;
-  border: 1px solid rgba(211, 154, 91, 0.34);
-  border-radius: 15px;
-  color: #1b1510;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  background: linear-gradient(100deg, var(--accent-bright), var(--accent));
-  transition: box-shadow 180ms ease, transform 180ms ease;
-}
-
-.map-cta:hover {
-  box-shadow: 0 10px 26px rgba(211, 154, 91, 0.2);
-  transform: translateY(-2px);
-}
-
-.cta-arrow {
-  font-size: 20px;
-  line-height: 0.7;
-}
-
-.home-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: min(100%, 560px);
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  letter-spacing: 0.12em;
-}
-
-.footer-stats {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.footer-stats strong {
-  color: var(--text);
-  font-size: 12px;
-}
-
-.stat-divider {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-@media (max-width: 560px) {
-  .home-shell {
-    padding: 18px;
-  }
-
-  .nav-meta {
-    display: none;
-  }
-
-  .home-content {
-    padding-top: 92px;
-  }
-
-  .home-content h1 {
-    font-size: clamp(56px, 17vw, 82px);
-  }
-
-  .home-footer {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(18px); }
+  from {opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.home-content {
-  animation: fadeIn 700ms ease-out both;
+.hero {
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* Optional */
+main {
+  padding: 1rem;
+}
+
+/* Theme-safe defaults */
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+p {
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* Map labels */
+/* =========================================================
+   BREWATLAS MAP
+   ========================================================= */
+
+.ba-map-screen {
+  position: relative;
+
+  width: 100vw;
+  height: 100svh;
+
+  overflow: hidden;
+
+  background: var(--bg);
+}
+
+.ba-map {
+  position: absolute;
+  inset: 0;
+}
+
+
+/* ---------- Coffee markers ---------- */
+
 .coffee-marker {
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-  color: #f4f1ed;
-  font-size: 13px;
-  font-weight: 600;
+  appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(240, 189, 123, 0.5);
+
+  color: #f4efe8;
+
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 650;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(76, 48, 29, 0.96),
+      rgba(39, 28, 21, 0.97)
+    );
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    width 160ms ease,
+    height 160ms ease,
+    padding 160ms ease;
+
+  pointer-events: auto;
+}
+
+.coffee-marker:hover {
+  transform: translateY(-1px);
+}
+
+
+/*
+  Zoomed-out map:
+  show compact bronze locations instead
+  of hundreds of overlapping names.
+*/
+.coffee-marker--dot {
+  width: 18px;
+  height: 18px;
+
+  padding: 0;
+
+  border-width: 2px;
+  border-radius: 50%;
+
+  font-size: 0;
+
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      #f0bd7b,
+      #c4874f 55%,
+      #704427 100%
+    );
+
+  box-shadow:
+    0 0 0 5px rgba(211, 154, 91, 0.12),
+    0 7px 16px rgba(0, 0, 0, 0.38);
+}
+
+
+/*
+  Zoom in and the dot becomes the
+  BrewAtlas shop-name pill.
+*/
+.coffee-marker--pill {
+  width: auto;
+  height: auto;
+
+  min-height: 32px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
   white-space: nowrap;
-  background: rgba(17, 16, 14, 0.9);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ---------- Shop popup ---------- */
+
+.ba-map-popup .mapboxgl-popup-content {
+  padding: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+
+  color: var(--text);
+
+  background: rgba(24, 20, 17, 0.96);
+
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.48);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.ba-map-popup .mapboxgl-popup-tip {
+  border-top-color:
+    rgba(24, 20, 17, 0.96);
+}
+
+.ba-shop-popup {
+  min-width: 190px;
+  max-width: 250px;
+
+  padding: 14px 15px;
+}
+
+.ba-shop-popup-title {
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 750;
+
+  line-height: 1.25;
+}
+
+.ba-shop-popup-address {
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* ---------- Floating map UI ---------- */
+
+.ba-map-style-toggle {
+  position: absolute;
+
+  top:
+    max(
+      14px,
+      calc(
+        env(safe-area-inset-top) +
+        10px
+      )
+    );
+
+  left: 14px;
+
+  z-index: 100;
+
+  display: flex;
+  gap: 4px;
+
+  padding: 4px;
+
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 16px;
+
+  background: rgba(20,17,14,0.90);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.3);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.ba-map-style-toggle button {
+  padding: 8px 11px;
+
+  border: 0;
+  border-radius: 12px;
+
+  color: rgba(244,239,232,0.78);
+
+  font-size: 12px;
+  font-weight: 650;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.ba-map-style-toggle button:active {
+  background:
+    rgba(211,154,91,0.14);
+}
+
+.ba-shop-count {
+  position: absolute;
+
+  top:
+    max(
+      18px,
+      calc(
+        env(safe-area-inset-top) +
+        14px
+      )
+    );
+
+  right: 14px;
+
+  z-index: 100;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+
+  color: rgba(244,239,232,0.86);
+
+  font-size: 12px;
+  font-weight: 650;
+
+  background: rgba(20,17,14,0.90);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.3);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.ba-find-area {
+  position: absolute;
+
+  top:
+    max(
+      72px,
+      calc(
+        env(safe-area-inset-top) +
+        68px
+      )
+    );
+
+  left: 50%;
+
+  z-index: 100;
+
+  transform:
+    translateX(-50%);
+
+  padding: 11px 16px;
+
+  border: 1px solid
+    rgba(240,189,123,0.38);
+
+  border-radius: 999px;
+
+  color: #1a130e;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  white-space: nowrap;
+
+  background:
+    linear-gradient(
+      100deg,
+      #f0bd7b,
+      #d39a5b
+    );
+
+  box-shadow:
+    0 10px 28px
+      rgba(0,0,0,0.34);
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   BREWATLAS APP SHELL
+   ========================================================= */
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  overscroll-behavior: none;
+}
+
+/* ---------- Splash screen ---------- */
+
+.ba-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(211, 154, 91, 0.10) 0%,
+      rgba(211, 154, 91, 0.035) 28%,
+      transparent 52%
+    ),
+    linear-gradient(
+      180deg,
+      #17120f 0%,
+      #120f0d 55%,
+      #0d0b09 100%
+    );
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 420ms ease,
+    visibility 420ms ease;
+}
+
+.ba-splash--leaving {
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+}
+
+.ba-splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(88vw, 420px);
+  transform: translateY(-2vh);
+}
+
+.ba-splash-emblem {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 190px;
+  height: 190px;
+
+  margin-bottom: 18px;
+}
+
+.ba-splash-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(211, 154, 91, 0.13);
+}
+
+.ba-splash-ring-one {
+  width: 160px;
+  height: 160px;
+
+  animation: ba-ring-pulse 2.2s ease-in-out infinite;
+}
+
+.ba-splash-ring-two {
+  width: 190px;
+  height: 190px;
+
+  border-color: rgba(211, 154, 91, 0.07);
+
+  animation: ba-ring-pulse 2.2s 220ms ease-in-out infinite;
+}
+
+.ba-splash-mark {
+  position: relative;
+  z-index: 2;
+
+  width: 132px;
+  height: 132px;
+
+  object-fit: contain;
+
+  animation: ba-logo-pulse 1.4s ease-in-out infinite;
+}
+
+.ba-splash-wordmark {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+
+  color: #f4efe8;
+
+  font-size: clamp(44px, 12vw, 58px);
+  font-weight: 600;
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+
+  text-shadow: 0 12px 24px rgba(0, 0, 0, 0.36);
+}
+
+.ba-splash-tagline {
+  margin-top: 18px;
+
+  color: rgba(244, 239, 232, 0.72);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+}
+
+.ba-splash-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+
+  margin-top: 48px;
+
+  color: rgba(244, 239, 232, 0.53);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ba-splash-loading-line {
+  position: relative;
+
+  display: block;
+
+  width: 76px;
+  height: 2px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(211, 154, 91, 0.16);
+}
+
+.ba-splash-loading-line::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  width: 44%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d39a5b,
+    #f0bd7b,
+    transparent
+  );
+
+  animation: ba-loading-line 1.25s ease-in-out infinite;
+}
+
+@keyframes ba-logo-pulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes ba-loading-line {
+  from {
+    transform: translateX(-130%);
+  }
+
+  to {
+    transform: translateX(260%);
+  }
+}
+
+
+/* ---------- Bottom app tabs ---------- */
+
+.ba-bottom-tabs {
+  position: fixed;
+
+  left: 50%;
+  bottom: max(10px, env(safe-area-inset-bottom));
+
+  z-index: 500;
+
+  display: flex;
+  align-items: stretch;
+
+  width: min(calc(100% - 24px), 520px);
+  min-height: 68px;
+
+  padding: 6px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 23px;
+
+  background: rgba(20, 17, 14, 0.92);
+
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.ba-tab {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  min-height: 54px;
+
+  border-radius: 17px;
+
+  color: rgba(244, 239, 232, 0.48);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 150ms ease;
+}
+
+.ba-tab:active {
+  transform: scale(0.96);
+}
+
+.ba-tab--active {
+  color: var(--accent-bright);
+
+  background: rgba(211, 154, 91, 0.10);
+}
+
+.ba-tab-icon {
+  width: 23px;
+  height: 23px;
+}
+
+
+/* ---------- Mapbox app adjustments ---------- */
+
+/*
+   Stops Mapbox controls from sitting underneath
+   our iOS-style navigation bar.
+*/
+.mapboxgl-ctrl-bottom-right {
+  bottom: calc(86px + env(safe-area-inset-bottom)) !important;
+  right: 8px !important;
+}
+
+/* Make Mapbox navigation controls fit BrewAtlas better */
+.mapboxgl-ctrl-group {
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 16px !important;
+
+  background: rgba(20, 17, 14, 0.90) !important;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.30) !important;
+
+  backdrop-filter: blur(18px);
+}
+
+.mapboxgl-ctrl-group button {
+  background-color: transparent !important;
+}
+
+.mapboxgl-ctrl-icon {
+  filter: invert(1);
+  opacity: 0.78;
+}
+
+
+/* ---------- Profile ---------- */
+
+.ba-profile-screen {
+  min-height: 100svh;
+
+  padding:
+    calc(28px + env(safe-area-inset-top))
+    20px
+    calc(110px + env(safe-area-inset-bottom));
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 70% 10%,
+      rgba(211, 154, 91, 0.09),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #17130f 0%,
+      #100e0c 100%
+    );
+}
+
+.ba-section-title {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+
+  font-size: 36px;
+  font-weight: 600;
+
+  letter-spacing: -0.03em;
+}
+
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-splash-ring,
+  .ba-splash-loading-line::after {
+    animation: none;
+  }
+
+
+  .ba-splash {
+    transition-duration: 100ms;
+  }
 }
